@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: black !important;
+}
+
+.logo {
+  height: 3rem;
+}
+
+.logo img {
+  height: 100%;
+}
+

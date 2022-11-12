@@ -1,0 +1,16 @@
+.cuadrado {
+  width: 300px;
+  height: 300px;
+  border: solid 2px black;
+}
+
+.container_btns {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
+}
+
+body {
+  height: 200vh;
+}
