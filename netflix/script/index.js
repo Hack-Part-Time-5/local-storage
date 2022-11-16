@@ -27,3 +27,27 @@ search_btn.onclick = () => {
   input_search.classList.add('input_search_active')
 }
 
+function create (array, padre) {
+  array.forEach (dato => {
+    let zona_pelis = document.querySelector(padre);
+  
+    let div_cols = document.createElement('div');
+  
+    zona_pelis.appendChild(div_cols);
+  
+    div_cols.style.width = 'auto';
+  
+    div_cols.innerHTML = `
+      <div class="card mb-3 me-3" style="width: 18rem;">
+        <img id="num${dato.id}" src="${dato.img}" class="card-img-top img_tamaño" alt="...">
+        <div class="card-body ocultar">
+          <h5 class="card-title">${dato.nombre}</h5>
+          <p class="card-text">${dato.categoria}</p>
+          <p class="card-text">año: ${dato.año}</p>
+          <p class="card-text"> ${dato.descripcion}</p>
+          <a href="#" class="btn btn-primary">See movie</a>
+        </div>
+      </div>
+    `
+  })
+}
