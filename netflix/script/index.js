@@ -1,8 +1,10 @@
 let search_btn = document.getElementById('search_btn')
 let search_inp = document.getElementById('search_inp')
 let input_search = document.querySelector('.input_search')
+let title_wrapper = document.getElementById('title_wrapper')
+let key = ''
 
-console.log(input_search);
+console.log(search_btn);
 
 function outsideClick(event, search_btn)	{
   var clickedOut = true;
@@ -27,27 +29,37 @@ search_btn.onclick = () => {
   input_search.classList.add('input_search_active')
 }
 
-function create (array, padre) {
-  array.forEach (dato => {
-    let zona_pelis = document.querySelector(padre);
-  
-    let div_cols = document.createElement('div');
-  
-    zona_pelis.appendChild(div_cols);
-  
-    div_cols.style.width = 'auto';
-  
-    div_cols.innerHTML = `
-      <div class="card mb-3 me-3" style="width: 18rem;">
-        <img id="num${dato.id}" src="${dato.img}" class="card-img-top img_tamaño" alt="...">
-        <div class="card-body ocultar">
-          <h5 class="card-title">${dato.nombre}</h5>
-          <p class="card-text">${dato.categoria}</p>
-          <p class="card-text">año: ${dato.año}</p>
-          <p class="card-text"> ${dato.descripcion}</p>
-          <a href="#" class="btn btn-primary">See movie</a>
-        </div>
-      </div>
-    `
+let path_popular_movies = 'https://api.themoviedb.org/3/movie/popular?api_key=38758aa5680465c0472c269bc08e22d5'
+
+fetch(path_popular_movies)
+  .then(response => response.json())
+  .then(data => {
+    let popular_movies = data.results
+
+    console.log(popular_movies);
+
+    let num_aleatori = aleatori_movie(popular_movies)
+
+    let random_movie = popular_movies[num_aleatori]
+
+    let random_movie_id = random_movie.id
+
+    let random_movie_id_path = `https://api.themoviedb.org/3/movie/${random_movie_id}/images?api_key=38758aa5680465c0472c269bc08e22d5`
   })
+
+
+function img_random_movie(path) {
+  
+}
+
+function aleatori_movie(array) {
+  let max_num = array.length;
+  let num_aleatori = getRandomArbitrary(0 , max_num);
+  num_aleatori = parseInt(num_aleatori)
+
+  return(num_aleatori)
+}
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
 }

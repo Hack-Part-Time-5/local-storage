@@ -7,7 +7,6 @@ let inp_btn = document.getElementById('inp_btn');
 let inp_data = document.getElementById('inp_data');
 let inp_obj = document.getElementById('inp_obj');
 
-console.log(inp_name);
 
 //cargamos en la consola nuestra base de datos local para observar su funcionamiento
 
@@ -35,9 +34,6 @@ inp_btn.onclick = () => {
   )
 
   console.log(data);
-  localStorage.setItem('students',JSON.stringify(data));
-  
-  console.log(localStorage);
 }
 
 //usamos un metodo que nos permite tranformar un objeto a un archivo JSON
